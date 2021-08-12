@@ -17,10 +17,10 @@ function App() {
   }, [loading]);
 
   return (
-    <AnimateSharedLayout type='crossfade'>
+    <AnimateSharedLayout type="crossfade">
       <AnimatePresence>
         {loading ? (
-          <motion.div key='loader'>
+          <motion.div key="loader">
             <Loader setLoading={setLoading} />
           </motion.div>
         ) : (
@@ -28,11 +28,11 @@ function App() {
             <Header />
             <Banner />
             {!loading && (
-              <div className='transition-image final'>
+              <div className="transition-image final">
                 <motion.img
                   transition={{ ease: [0.6, 0.01, -0.05, 0.9], duration: 1.6 }}
-                  src={process.env.PUBLIC_URL + `/images/image-2.jpg`}
-                  layoutId='main-image-1'
+                  src={process.env.PUBLIC_URL + `/images/house1_af.png`}
+                  layoutId="main-image-1"
                 />
               </div>
             )}
