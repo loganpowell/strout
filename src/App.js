@@ -41,6 +41,10 @@ const cards = [
     },
 ]
 
+const linkStyle = {
+    textDecoration: "none",
+    color: "#5151CE",
+}
 function App() {
     const [loading, setLoading] = useState(true)
 
@@ -96,19 +100,39 @@ function App() {
                                             marginBottom: "4rem",
                                         }}
                                     >
-                                        {prompts.map(prompt => (
-                                            <li
-                                                style={{
-                                                    marginTop: "3rem",
-                                                }}
-                                            >
-                                                {prompt}
-                                            </li>
-                                        ))}
+                                        {prompts.map((prompt, idx) => {
+                                            const hashed = prompt.includes("#")
+                                            const hash = hashed && prompt.split("#")[1]
+                                            const replaced_hash = hashed && (
+                                                <>
+                                                    <span style={{ fontSize: "3rem" }}>
+                                                        {prompt.split("#")[0]}
+                                                    </span>
+                                                    <a
+                                                        href={`https://twitter.com/hashtag/${hash}`}
+                                                        style={linkStyle}
+                                                    >
+                                                        {" #"}
+                                                        {hash}
+                                                    </a>
+                                                </>
+                                            )
+                                            return (
+                                                <li
+                                                    key={idx}
+                                                    style={{
+                                                        marginTop: "3rem",
+                                                    }}
+                                                >
+                                                    {(hashed && replaced_hash) || prompt}
+                                                </li>
+                                            )
+                                        })}
                                     </ul>
                                     <div>
-                                        {cards.map(({ src, quote, quotee }) => (
+                                        {cards.map(({ src, quote, quotee }, idx) => (
                                             <Card
+                                                key={idx}
                                                 src={process.env.PUBLIC_URL + `/images/${src}`}
                                                 quote={quote}
                                                 quotee={quotee}
@@ -119,7 +143,7 @@ function App() {
                                         style={{
                                             display: "flex",
                                             alignItems: "center",
-                                            "illu-1": {},
+                                            //"illu-1": {},
                                         }}
                                     >
                                         <p
@@ -136,12 +160,37 @@ function App() {
                                             addition.
                                         </p>
                                         <Image
-                                            className="illu-1"
+                                            //className="illu-1"
                                             src={
                                                 process.env.PUBLIC_URL +
                                                 "/images/grow_up_illustration1.svg"
                                             }
                                         />
+                                    </div>
+                                    <div
+                                        style={{
+                                            //width: "100%",
+                                            border: "2px solid white",
+                                            height: "200px",
+                                            borderRadius: "10px",
+                                            textAlign: "center",
+                                            fontSize: "2rem",
+                                            margin: "2rem",
+                                            position: "relative",
+                                        }}
+                                    >
+                                        <a
+                                            style={{
+                                                position: "absolute",
+                                                top: "50%",
+                                                left: "50%",
+                                                transform: "translate(-50%, -50%)",
+                                                ...linkStyle,
+                                            }}
+                                            href="mailto:inquiries@anotherstory.house?subject=Referral%20from%20anotherstory"
+                                        >
+                                            inquiries@anotherstory.house
+                                        </a>
                                     </div>
                                 </div>
                             </>

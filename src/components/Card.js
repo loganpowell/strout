@@ -43,7 +43,7 @@ export const Card = ({ src, quote, quotee }) => (
             <Avatar src={src} />
             <p
                 style={{
-                    fontSize: "4rem",
+                    fontSize: "2.5rem",
                 }}
             >
                 -{quotee}
