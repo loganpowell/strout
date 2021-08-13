@@ -1,3 +1,58 @@
+@function calculateTypeOffset($lh, $fontSize, $descenderHeightScale) {
+    $lineHeightScale: $lh / $fontSize;
+    @return ($lineHeightScale - 1) / 2 + $descenderHeightScale;
+}
+
+@mixin basekick(
+    $typeSizeModifier,
+    $baseFontSize,
+    $descenderHeightScale,
+    $typeRowSpan,
+    $gridRowHeight,
+    $capHeight
+) {
+    $fontSize: $typeSizeModifier * $baseFontSize;
+    $lineHeight: $typeRowSpan * $gridRowHeight;
+    $typeOffset: calculateTypeOffset($lineHeight, $fontSize, $descenderHeightScale);
+    $topSpace: $lineHeight - $capHeight * $fontSize;
+    $heightCorrection: 0;
+
+    @if $topSpace > $gridRowHeight {
+        $heightCorrection: $topSpace - ($topSpace % $gridRowHeight);
+    }
+
+    $preventCollapse: 1;
+
+    font-size: #{$fontSize}px;
+    line-height: #{$lineHeight}px;
+    transform: translateY(#{$typeOffset}em);
+    padding-top: $preventCollapse;
+    &::before {
+        content: "";
+        margin-top: #{- ($heightCorrection + $preventCollapse)}px;
+        display: block;
+        height: 0;
+    }
+}
+
+//* {
+//    margin: 0;
+//    padding: 0;
+//    font-family: Lato;
+//}
+
+//h1 {
+//    @include basekick(4, 8, 0.11, 8, 4, 0.75);
+//}
+//h2{
+//    @include basekick(2, 8, 0.11, 6, 4, 0.75);
+//}
+
+// body {
+//   & > * + * {
+//     margin-top: 16px;
+//   }
+// }
 body {
-  background: $background;
+    background: $background;
 }
