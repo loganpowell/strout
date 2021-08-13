@@ -33,7 +33,9 @@ export const Header = () => {
                     </li>*/}
                 </nav>
                 <div className="contact">
-                    <a href="/contact">Let's work together</a>
+                    <a href="mailto:inquiries@anotherstory.house?subject=Referral%20from%20anotherstory">
+                        inquiries@anotherstory.house
+                    </a>
                 </div>
                 {/*<div className="hamburger-menu">
                     <span></span>
