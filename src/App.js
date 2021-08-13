@@ -170,12 +170,14 @@ function App() {
                                     <div
                                         style={{
                                             //width: "100%",
-                                            border: "2px solid white",
-                                            height: "200px",
-                                            borderRadius: "10px",
+                                            //border: "2px solid white",
+                                            backgroundColor: "white",
+                                            height: "100px",
+                                            borderTopLeftRadius: "10px",
+                                            borderTopRightRadius: "10px",
                                             textAlign: "center",
                                             fontSize: "2rem",
-                                            margin: "2rem",
+                                            margin: "4rem 0",
                                             position: "relative",
                                         }}
                                     >
