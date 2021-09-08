@@ -189,9 +189,9 @@ function App() {
                                                 transform: "translate(-50%, -50%)",
                                                 ...linkStyle,
                                             }}
-                                            href="mailto:inquiries@anotherstory.house?subject=Referral%20from%20anotherstory"
+                                            href="mailto:inquiries@anotherstory.com?subject=Referral%20from%20anotherstory"
                                         >
-                                            inquiries@anotherstory.house
+                                            inquiries@anotherstory.com
                                         </a>
                                     </div>
                                 </div>
